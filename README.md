@@ -39,3 +39,10 @@ NOTES: REGISTER CLIENT TIDAK PERLU ADA CUKUP REGISTRASI DI SERVER
 
 ### Client
 - Tampilkan list photo milik user (user gallery)
+
+
+npx sequelize db:create
+
+npx sequelize model:generate --name User --attributes email:string,password:string
+
+npx sequelize model:generate --name Photo --attributes imageUrl:string,UserId:integer
