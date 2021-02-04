@@ -37,7 +37,7 @@
                         <input id="password" class="uk-input" type="password" placeholder="password here">
                     </div>
                 </div>
-                <button type="submit" class="login-btn uk-button uk-button-primary">Login</button>
+                <button id="submit-btn" type="submit" class="login-btn uk-button uk-button-primary">Login</button>
             
             </form>            
         </div>
@@ -60,7 +60,7 @@
         
                 <ul class="uk-navbar-nav">
                     <li>
-                        <a href="#">Logout</a>
+                        <a id="logout" href="#">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -95,5 +95,78 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script>
+      const baseURL = 'http://localhost:3000/'
+        function auth(){
+            if(!localStorage.getItem("access_token")){
+                $("#main-page").hide()
+                $("#home-page").hide()
+                $("#my-gallery-page").hide()
+                $("#login-page").show()
+            }else{
+              $("#main-page").show()
+                $("#home-page").hide()
+                $("#my-gallery-page").hide()
+                $("#login-page").hide()
+                showFoto()
+            }
+        }
+        
+        function login(){
+          let email = $("#email").val()
+          let password = $("#password").val()
+          // console.log(email, password);
+          $.ajax({
+            url: baseURL+"login",
+            method: "POST",
+            data: {email, password}
+          })
+            .done(data => {
+              localStorage.setItem("access_token", data.access_token)
+              auth()
+            })
+            .fail((xml,err) => {
+              console.log(xml, err);
+            })
+            .always(_ => {
+              $("#login-page").trigger("reset")
+            })
+        }
+
+        function showFoto(){
+          $.ajax({
+            url: baseURL+"photos",
+            method: "GET",
+            headers: {
+              access_token: localStorage.getItem("access_token")
+            }
+          })
+            .done(done => {
+              console.log(done);
+            })
+            .fail((xml,err) => {
+              console.log(xml,err);
+            })
+        }
+
+        function logout(){
+          localStorage.clear()
+          auth()
+        }
+
+        $(document).ready(() => {
+          auth()
+          $("#submit-btn").click((e) => {
+            e.preventDefault()
+            login()
+          })
+          $("#logout").click((e) => {
+            e.preventDefault()
+            logout()
+          })
+        })
+    </script>
+
 </body>
 </html>
