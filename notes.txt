@@ -1,0 +1,11 @@
+tabel User = email:string,password:string
+tabel Photo = imageUrl:string
+
+bikin seeding buat foto, formatnya:
+{
+      "id": 1,
+      "imageUrl": "https://unsplash.com/photos/yC-Yzbqy7PY",
+      "UserId": 1,
+      "createdAt": "2020-06-12T16:22:40.469Z",
+      "updatedAt": "2020-06-12T16:22:40.469Z"
+}
