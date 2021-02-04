@@ -1,20 +1,23 @@
-const { Photo } = require("../models/index");
+const { User } = require("../models/index");
 
-const authorize = function (req, res) {
-  Photo.findOne({ where: { id: req.params.id } })
+const authorize = function (req, res, next) {
+  User.findOne({ where: { id: req.decoded.id } }) //kayaknya decoded ya
     .then((data) => {
       if (!data) {
-        res.status(404).json({name: "ClientError", msg: "Data Not Found"})
-      } else if (data.UserId !== req.decoded.id) {
-        res.status(401).json( {
-          name: "ClientError",
-          msg: "You dont have authorization to access",
-        })
+        res.status(404).json({ name: "ClientError", msg: "Data Not Found" });
+        //ini ga perlu
+      } else {
+        next();
       }
     })
     .catch((err) => {
-      res.status(500).json('Internal Server error')
+      console.log(err);
+      res.status(500).json("Internal Server error");
     });
 };
 
 module.exports = authorize;
+
+//kayaknya udah bisa
+//isinta array kosong
+//udah coba masukin body?
