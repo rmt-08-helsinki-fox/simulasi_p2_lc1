@@ -95,5 +95,38 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+        const baseUrl = `http://localhost:3000`
+        function auth(){
+            if (localStorage.access_token){
+                $('#home-page').show()
+            } else {
+                const email = $("#email").val()
+                const password = $("#password").val()
+                $.ajax({
+                    url: `${baseUrl}/users/login`,
+                    method: 'POST',
+                    data: {
+                        email: email,
+                        password: password
+                    }
+                })
+                .done(response => {
+                    localStorage.setItem("access_token") = response.access_token
+                    $('#home-page').show()
+                })
+                .fail(error => {
+                    console.log(err)
+                })
+                .always(_ => {
+                    $('#login-page').trigger(reset)
+                })
+            }
+        }
+
+        $(document).ready(() => {
+            auth()
+        })
+    </script>
 </body>
 </html>

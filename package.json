@@ -1,0 +1,23 @@
+{
+  "name": "simulasi_p2_lc1",
+  "version": "1.0.0",
+  "description": "Buatlah sebuah website untuk menampilkan foto-foto, yang diambil dari API yang akan kalian buat.\r Berikut contoh tampilan dari website yg akan kalian buat. Kalian bisa menggunakan template html yang sudah di sediakan. tapi tetap kerjakan client pada file index.html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gamerberiman/simulasi_p2_lc1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gamerberiman/simulasi_p2_lc1/issues"
+  },
+  "homepage": "https://github.com/gamerberiman/simulasi_p2_lc1#readme",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
