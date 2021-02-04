@@ -122,51 +122,5 @@ $(document).ready(() => {
       event.preventDefault();
       postLogout();
   })
-    //oke lanjut
-    //WAAAAAAA MASUK
-    //giman a fer?
-//
-    // UDAH BISA NIH coba gue kirim record nya ya 
-
-    //HOREEEE
-    //push aja lah ya wkwk
-    //udah bisa niih jalan wkwk
-    //tinggal coba logout 
-
-    //ini invoke photos 2 kali ya? pas di auth jg invoke kan ya
-    //iya tambahin sendiri ya
-    //gak bs langsung pake id "login-page" aja?
-    // ga bisa soalnya pake method on submit itu
-    //yang bisa submit cuma form
-    //bentar gue bingung munculin getphotosnnya kapan
-    // wkwk
+  
 });
-
-//baru sadar ga ada section untuk register
-// iya ini nyari lah kok ga ada wkwkkw
-//bentar baca ulang md nya wah parah
-// oke emang ga ada
-
-//gimana tuh wkwk..
-//wkakaka ini nih gua kurang, kemarin ga masuk soalnya
-// wkwkwk susah ga boleh ga masuk hacktiv8 mah
-// tapi bisa nonton ulang recording siih
-
-//hahahaha betul
-//udah instll live-servernya?
-//pake extension wkwk
-//
-
-//btw gw belom coba yang ini, kalo disini kan get item nya "Access_token", tp sebenrnya di authenticate gw tuh
-// nulisnya req.decoded.token
-
-//ohh iyaa betul2
-//OOOH baru tau gw, oke2 tengkyu fer
-//lanjut ga nih? wkwk dikit lagi
-
-// coba dah, cuma 3 kan wkwk
-
-// beda , kalo itu kan kita di server,
-//ini tuh kayak kerja dua kali, ini client side,
-// makanya ini function2 kita bikin juga jumlah nya kira2 sama kayak yang di controller
-// kalo disini tokennya disimpen di local storage browsernya dulu
