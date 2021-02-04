@@ -1,6 +1,6 @@
 # My-Gallery
 
-​
+
 List of available endpoints:
 ​
 - `POST /register`
