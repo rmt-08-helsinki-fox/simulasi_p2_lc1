@@ -1,11 +1,10 @@
 const { User } = require("../models/index");
 
 const authorize = function (req, res, next) {
-  User.findOne({ where: { id: req.decoded.id } }) //kayaknya decoded ya
+  User.findOne({ where: { id: req.decoded.id } })
     .then((data) => {
       if (!data) {
         res.status(404).json({ name: "ClientError", msg: "Data Not Found" });
-        //ini ga perlu
       } else {
         next();
       }
@@ -17,7 +16,3 @@ const authorize = function (req, res, next) {
 };
 
 module.exports = authorize;
-
-//kayaknya udah bisa
-//isinta array kosong
-//udah coba masukin body?
