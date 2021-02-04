@@ -1,7 +1,7 @@
 # My-Gallery
 
 ​
-List of available endpoints:
+List of avaiable endpoints:
 ​
 - `POST /register`
 - `POST /login`
