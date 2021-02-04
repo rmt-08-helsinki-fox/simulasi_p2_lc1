@@ -60,7 +60,7 @@
         
                 <ul class="uk-navbar-nav">
                     <li>
-                        <a href="#">Logout</a>
+                        <a href="#" onclick="logout()">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -95,5 +95,71 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+        function auth(){
+            if(!localStorage.getItem('access_token')){
+                $('#login-page').show()
+                $('#my-gallery-page').hide()
+            }else {
+                $('#login-page').hide()
+                $('#my-gallery-page').show()
+                fetchPhoto()
+            }
+        }
+
+        function fetchPhoto(){
+            let baseUrl = 'http://localhost:3000/'
+            $.ajax({
+                url: baseUrl + 'photo',
+                method: 'GET',
+                headers: {access_token: localStorage.getItem('access_token')}
+            })
+            .done(data =>{
+                $('#my-gallery-page').empty()
+                data.forEach(el => {
+                    $('#my-gallery-page').append(`
+                    <div class="card-custom uk-card uk-card-default uk-card-hover uk-card-body">
+                        <i class="trash far fa-minus-square"></i>
+                        <img src="${el.imageURL}" alt="image">
+                    </div>`)
+                })
+            })
+            .fail((err,text)=>{
+                console.log(err,text)
+            })
+        }
+
+        function logout() {
+            localStorage.removeItem('access_token')
+            auth()
+        }
+    
+        $(document).ready( () => {
+            auth()
+            let baseUrl = 'http://localhost:3000/'
+
+            $('#login-page').on('submit', (e) => {
+                e.preventDefault()
+                let email = $('#email').val()
+                let password = $('#password').val()
+                $.ajax({
+                    url: baseUrl + 'users/login',
+                    method: 'POST',
+                    data: {email, password}
+                })
+                .done(data => {
+                    localStorage.setItem('access_token', data.access_token)
+                    auth()
+                })
+                .fail((err, txt) => {
+                    console.log(err, txt)
+                })
+                .always(() => {
+                    let email = $('#email').val('')
+                    let password = $('#password').val('')
+                })
+            })
+        })
+    </script>
 </body>
 </html>
