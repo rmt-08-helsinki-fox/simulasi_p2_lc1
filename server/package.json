@@ -1,12 +1,29 @@
 {
-  "name": "server",
+  "name": "simulasi_p2_lc1",
   "version": "1.0.0",
-  "description": "",
+  "description": "Buatlah sebuah website untuk menampilkan foto-foto, yang diambil dari API yang akan kalian buat.\r Berikut contoh tampilan dari website yg akan kalian buat. Kalian bisa menggunakan template html yang sudah di sediakan. tapi tetap kerjakan client pada file index.html",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fathannrd/simulasi_p2_lc1.git"
+  },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fathannrd/simulasi_p2_lc1/issues"
+  },
+  "homepage": "https://github.com/fathannrd/simulasi_p2_lc1#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.5.1",
+    "sequelize": "^6.5.0"
+  }
 }
